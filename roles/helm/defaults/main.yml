@@ -1,0 +1,7 @@
+#helm_charts:
+#  - "helm install gitlab gitlab/gitlab --timeout 600 --set global.hosts.domain=example.com --set global.hosts.externalIP=10.10.10.10 --set certmanager-issuer.email=me@example.com"
+#  - "helm install gitlab/gitlab   --timeout 600   --set global.hosts.domain=example.com   --set global.hosts.externalIP=10.10.10.10   --set certmanager-issuer.email=me@example.com"
+#  - "helm install --name metallb stable/metallb"
+helm_repo:
+  - name: "gitlab"
+    url: "https://charts.gitlab.io/"

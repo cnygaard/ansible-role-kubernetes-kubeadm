@@ -1,0 +1,17 @@
+---
+- name: Write template
+  template:
+    src: "{{ item }}"
+    dest: "/etc/kubernetes/{{ item }}"
+  loop:
+    - "metal-lb-layer2.yml"
+    - "metallb-arp.yml"
+
+- name: Kubernetes create name space
+  shell: kubectl create namespace metallb-system
+
+- name: Kubectl Apply Config
+  shell: kubectl apply -f /etc/kubernetes/metal-lb-layer2.yml
+
+- name: Kubectl Apply Metallb
+  shell: kubectl apply -f https://raw.githubusercontent.com/google/metallb/v0.8.1/manifests/metallb.yaml

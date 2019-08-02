@@ -1,0 +1,15 @@
+---
+- name: Helm Init
+  shell: helm init --history-max 200
+
+- name: Helm repo add
+  shell: "helm repo add {{ item.name }} {{ item.url }}"
+  with_items: "{{ helm_repo }}"
+
+- name: Helm repo update
+  shell: "helm update"
+
+- name: Install Helm charts
+  shell: "{{ item }}"
+  with_items: "{{ helm_charts }}"
+  when: helm_charts is defined

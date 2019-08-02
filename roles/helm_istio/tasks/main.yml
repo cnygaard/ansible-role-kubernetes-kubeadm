@@ -1,0 +1,12 @@
+---
+- name: Helm add Istio repo
+  shell: helm repo add istio.io https://storage.googleapis.com/istio-release/releases/1.2.2/charts/
+
+#- name: Create Namespace istio-system
+#  shell: kubectl create namespace istio-system
+
+- name: Install Tiller
+  shell: helm init --service-account tiller
+
+- name: install the istio chart
+  shell: helm install install/kubernetes/helm/istio --name istio --namespace istio-system

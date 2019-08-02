@@ -1,0 +1,8 @@
+---
+- name: Reset Kubernetes cluster
+  shell: kubeadm reset -f
+  when: kubernetes_reset
+
+- name: Flush iptables
+  shell: iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X && iptables -F KUBE-FIREWALL
+  when: kubernetes_flush_iptables is defined

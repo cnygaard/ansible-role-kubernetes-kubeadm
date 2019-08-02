@@ -1,0 +1,22 @@
+- hosts: localhost
+
+  vars:
+    kubernetes_allow_pods_on_master: true
+    #kubernetes_network_provider: "flannel"
+    kubernetes_reset: false
+
+  roles:
+    - role: kubernetes-reset
+      tags: kubernetes-reset
+    - role: geerlingguy.docker
+      tags: geerlingguy.docker
+    - role: geerlingguy.kubernetes
+      tags: geerlingguy.kubernetes
+    - role: andrewrothstein.kubernetes-helm
+      tags: andrewrothstein.kubernetes-helm
+    - role: cnygaard.kubectl_krew
+      tags: cnygaard.kubectl_krew
+    - role: helm
+      tags: helm
+    - role: kubernetes-metal-lb
+      tags: kubernetes-metal-lb
