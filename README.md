@@ -35,4 +35,5 @@ ubernetess_role: node
 
 kubernetes_reset: true/false If you should do a full Cluster reset.
 
-
+### How to run playbook
+`ansible-playbook -bK -i hosts site.yml`
